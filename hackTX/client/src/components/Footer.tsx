@@ -11,10 +11,10 @@ const Footer = () => {
   return (
     <>
       <div className="flex flex-row justify-center h-12 w-screen mt-auto text-black bg-navgray">
-        <div className="pt-2">
+        <div className="flex flex-row justify-center align-middle">
           <p className="text-sm">{"Created for HackTX 2023 | "}</p>
 
-          <div className="flex flex-row space-x-2 px-2 text-sm">
+          <div className="flex flex-row justify-around space-x-2 px-2 text-sm">
             <a href={GITHUBS.ALTON}>@altonph</a>
             <a href={GITHUBS.SAGE}>@SageCT</a>
             <a href={GITHUBS.UJWAL}>@ujwal2003</a>
