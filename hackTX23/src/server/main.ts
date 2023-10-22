@@ -52,6 +52,28 @@ app.post('/users/login',async (req,res)=> {
   }
 })
 
+// Update user data
+// app.put('/users', async (req : any, res) => {
+ 
+//   const user: any = users.find(function(usr: any) {
+//     return usr.email == req.body.email
+//   })
+//   if (user == null){
+//     return res.status(400).send('Cannot find user')
+//   }
+//   try {
+//     // Update user data based on the request body
+//     for (const key in req.body) {
+//       if (Object.prototype.hasOwnProperty.call(req.body, key)) {
+//         user[key] = req.body[key];
+//       }
+//     }
+
+//     res.send('User data updated successfully');
+//   } catch {
+//     res.status(500).send('Failed to update user data');
+//   }
+// });
 
 // app.get("/hello", (_, res) => {
 //   res.send("Hello Vite + React + TypeScript!");

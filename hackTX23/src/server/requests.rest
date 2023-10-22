@@ -24,3 +24,13 @@ Content-Type: application/json
     "password": "password"
     
 }
+
+# PUT http://localhost:3000/users
+# Content-Type: application/json
+
+# {  
+
+#     "email": "kev444@gmail.com",
+#     "password": "password"
+    
+# }
