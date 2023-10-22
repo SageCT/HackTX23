@@ -7,7 +7,7 @@ const RegisterPage = () => {
 
     <div id= "registerBox" className= "flex flex-col border-2 border-black rounded-xl m-4">
 
-      <a href="#" className="flex items-center justify-center"><img src="./images/logo.png" alt="Logo"/></a>
+      <a href="#" className="flex items-center justify-center pt-8"><img src="/futuresight.svg" alt="FutureSight Logo"/></a>
 
       <div id= "registerText" className= "text-center mx-auto w-64">
         Sign up to discover your career path and unlock the future.
