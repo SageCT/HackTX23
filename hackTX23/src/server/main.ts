@@ -1,9 +1,9 @@
 import express from "express";
 const mongoose = require('mongoose');
-
+const dataModel = require('./model');
+// import * as model from "./model";
 const app = express();
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
 app.use(express.json());
 
 let dbUser = "futuresite_admin";
@@ -17,8 +17,16 @@ mongoose.connect(uri).then(() => {
 
 const users:any = []
 //Get user data
-app.get('/users', (req,res) => {
-  res.json(users)
+app.get('/users',async (req,res) => {
+  
+  try{
+    const model = await dataModel.find({});
+    res.status(200).json(model);
+    
+  }catch(error : any){
+    res.status(500).json({message: error.message});
+  }
+
 });
 //Add input user data
 app.post('/users', async (req,res) => {
@@ -31,8 +39,8 @@ app.post('/users', async (req,res) => {
       password: EncryptedPassword,
       location: req.body.location,
     };
-    users.push(user);
-    res.status(201).send('User created successfully');
+    const data = dataModel.create(user);
+    res.status(201).json(data);
   }
   catch{
     res.status(500).send("Failed to create User");
@@ -43,21 +51,23 @@ app.post('/users', async (req,res) => {
 app.post('/users/login',async (req,res)=> {
   //checks if the account exists and if the password is correct
   // const user: any = users.find(you: any => you.email == req.body.email)
-  const user: any = users.find(function(usr: any) {
-    return usr.email == req.body.email
-  })
-  if (user == null){
-    return res.status(400).send('Cannot find user')
-  }
+ 
   try{
-    if( await bcrypt.compare(req.body.password, user.password)){
-      res.send('Success')
+    const loginData = await dataModel.find({email:req.body.email});
+    if (loginData.length === 0 ){
+      return res.status(400).send('Cannot find user')
+    }
+    // console.log(req.body.password);
+    // console.log(loginData[0].password);
+    if( await bcrypt.compare(req.body.password, loginData[0].password)){
+      res.status(200).json(loginData);
     }
     else{
       res.send('Not Allowed')
     }
-  } catch{
-    res.status(500).send()
+  } catch(error:any){
+    console.error(error);
+    // res.status(500).json({message: error.message});
   }
 })
 
