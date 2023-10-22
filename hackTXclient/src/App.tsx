@@ -1,4 +1,3 @@
-import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import LandingPage from "./pages/LandingPage";
@@ -6,7 +5,6 @@ import RegisterPage from "./pages/RegisterPage";
 import QuestionPage from "./pages/QuestionPage";
 import FinalPage from "./pages/FinalPage";
 import LoginPage from "./pages/LoginPage";
-import { useState } from "react";
 
 function App() {
   return (
