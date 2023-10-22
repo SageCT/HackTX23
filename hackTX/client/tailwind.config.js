@@ -2,6 +2,10 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
+    fontFamily: {
+      koulen: ["Koulen", "Open Sans", "sans-serif"],
+      opensans: ["Open_Sans", "Open Sans", "sans-serif"],
+    },
     extend: {
       colors: {
         navgray: "#D9D9D9",
