@@ -1,6 +1,17 @@
 import React from "react";
 import Footer from "../components/Footer";
 
+const affinity = [["web_dev", 0],["info_sec", 0],["database_arc",0]];
+
+
+
+function QuestionsResponse() {
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    e.preventDefault();
+    
+}
+
+
 const QuestionPage = () => {
   return (
     <>

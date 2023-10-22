@@ -45,7 +45,7 @@ const Landingpage = () => {
                 Make an informed decision
               </h1>
               <ul className="list-disc">
-                <li className="text-lg text-left font-koulen">
+                <li className="text-lg text-left font-koulen ">
                   Find out your earning potential
                 </li>
                 <li className="text-lg text-left font-koulen">
