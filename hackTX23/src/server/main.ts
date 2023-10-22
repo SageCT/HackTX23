@@ -54,7 +54,6 @@ app.post('/users/login', async (req, res) => {
   if (user === undefined) {
     return res.status(400).send('Cannot find user');
   }
-
   try {
     if (await bcrypt.compare(req.body.password, user.password)) {
       // Password is correct, generate and send a JWT token
