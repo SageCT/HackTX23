@@ -7,6 +7,7 @@ const Landingpage = () => {
   return (
     <>
       <NavBar />
+      <a href="/QuestionPage">Question Page</a>
       <div className="bg-white h-screen">
         {/* Title Test */}
         <div className="">
