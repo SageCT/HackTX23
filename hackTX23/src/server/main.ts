@@ -1,5 +1,4 @@
 import express from "express";
-import ViteExpress from "vite-express";
 
 require('dotenv').config()
 const app = express();
@@ -71,10 +70,14 @@ app.post('/users/login', async (req, res) => {
 
 
 
-app.get("/hello", (_, res) => {
-  res.send("Hello Vite + React + TypeScript!");
+app.get("/", (_, res) => {
+  res.send("Hello, World");
 });
 
-ViteExpress.listen(app, 3000, () => 
+app.get("/oe-codes", (req, res) => {
+  res.send("test");
+});
+
+app.listen(3000, () => {
   console.log("Server is listening on port 3000...")
-);
+});
