@@ -24,7 +24,7 @@ const LandingPage = () => {
                 <a href="#" className="text-blue-500">Forgot password?</a>
             </div>
 
-            <button className="btn bg-blue-600 normal-case text-white px-16 m-4">Log in</button>
+            <button className="btn bg-blue-600 normal-case text-white px-16 m-4"><a href="/LandingPage">Log in</a></button>
 
             <div id= "Signup">
                 Don't have an account? <a href="/RegisterPage" className="text-blue-500">Sign up</a>

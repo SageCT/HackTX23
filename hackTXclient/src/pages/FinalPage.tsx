@@ -31,7 +31,7 @@ const FinalPage = () => {
               </ul>
             </div>
             <div className="text-xl font-koulen mt-4">
-              Estimated Salary: $XX,XXX
+              Estimated Salary: $88,030
             </div>
           </div>
 
@@ -56,7 +56,7 @@ const FinalPage = () => {
               </ul>
             </div>
             <div className="text-xl font-koulen mt-4">
-              Estimated Salary: $XX,XXX
+              Estimated Salary: $107,950
             </div>
           </div>
 
@@ -82,7 +82,7 @@ const FinalPage = () => {
               </ul>
             </div>
             <div className="text-xl font-koulen mt-4">
-              Estimated Salary: $XX,XXX
+              Estimated Salary: $169,960
             </div>
           </div>
         </div>
