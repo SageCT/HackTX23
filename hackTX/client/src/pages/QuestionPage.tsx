@@ -8,7 +8,7 @@ const QuestionPage = () => {
   <div id="Question" className="mb-4 text-xl font-semibold p-4">
     I enjoy activities like art, writing, or other creative outlets.
   </div>
-
+g
   <div className="flex flex-col gap-3">
     <div className="border-2 border-black rounded-xl p-2">
       <a href="#" className="block p-2 text-left hover:bg-gray-200 hover:border-gray-400">Strongly agree</a>

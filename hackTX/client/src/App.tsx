@@ -8,23 +8,22 @@ import FinalPage from "./pages/FinalPage";
 import LoginPage from "./pages/LoginPage";
 import { useState } from "react";
 
-
 function App() {
   return (
     <>
-    <Router>
-      <Routes>
-      {/* <div className="mx-auto my-auto h-screen overflow-hidden bg-white text-black"> */}
-      <Route index element={<LandingPage />} />
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/RegisterPage" element={<RegisterPage />} />
-          <Route path="/LoginPage" element={<LoginPage />} /> 
-          <Route path="/QuestionPage" element={<QuestionPage />} />
-          <Route path="/FinalPage" element={<FinalPage />} />
-          <Route path="*" element={<LandingPage />} />
-      {/* </div> */}
-      </Routes>
-    </Router>
+      <div className="mx-auto my-auto h-screen bg-white text-black">
+        <Router>
+          <Routes>
+            <Route index element={<LandingPage />} />
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/RegisterPage" element={<RegisterPage />} />
+            <Route path="/LoginPage" element={<LoginPage />} />
+            <Route path="/QuestionPage" element={<QuestionPage />} />
+            <Route path="/FinalPage" element={<FinalPage />} />
+            <Route path="*" element={<LandingPage />} />
+          </Routes>
+        </Router>
+      </div>
     </>
   );
 }
