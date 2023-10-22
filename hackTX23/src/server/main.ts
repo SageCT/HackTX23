@@ -1,10 +1,19 @@
 import express from "express";
-
+const mongoose = require('mongoose');
 
 const app = express();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 app.use(express.json());
+
+let dbUser = "futuresite_admin";
+let dbPass = "EVbv15GvZ8BX7zkk";
+let uri = `mongodb+srv://${dbUser}:${dbPass}@cluster0.mvingdv.mongodb.net/?retryWrites=true&w=majority`;
+mongoose.connect(uri).then(() => {
+  console.log('connected to db');
+}).catch(function(err: any) {
+  console.error(err);
+});
 
 const users:any = []
 //Get user data
