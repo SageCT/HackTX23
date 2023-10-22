@@ -8,7 +8,6 @@ const Landingpage = () => {
     <>
       <div className="flex flex-col">
         <NavBar />
-        <a href= "/FinalPage">Final Page</a>
         <div className="bg-white text-black h-screen">
           {/* Title Test */}
           <div className="">
@@ -33,10 +32,10 @@ const Landingpage = () => {
                 Accelerate Your Finances
               </h1>
               <ul className="list-disc">
-                <li className="text-lg text-left font-koulen pl-3">
+                <li className="text-lg text-left font-koulen ml-6">
                   Find out your earning potential
                 </li>
-                <li className="text-lg text-left font-koulen">
+                <li className="text-lg text-left font-koulen ml-6">
                   Pivot your plans to match your passions
                 </li>
               </ul>
@@ -46,10 +45,10 @@ const Landingpage = () => {
                 Make an informed decision
               </h1>
               <ul className="list-disc">
-                <li className="text-lg text-left font-koulen ">
+                <li className="text-lg text-left font-koulen ml-6">
                   Find out your earning potential
                 </li>
-                <li className="text-lg text-left font-koulen">
+                <li className="text-lg text-left font-koulen ml-6">
                   Pivot your plans to match your passions
                 </li>
               </ul>
@@ -59,10 +58,10 @@ const Landingpage = () => {
                 Learn about what's in demand
               </h1>
               <ul className="list-disc">
-                <li className="text-lg text-left font-koulen">
+                <li className="text-lg text-left font-koulen ml-6">
                   Never stress for employment
                 </li>
-                <li className="text-lg text-left font-koulen">
+                <li className="text-lg text-left font-koulen ml-6">
                   Freedom to work and live where you want
                 </li>
               </ul>
