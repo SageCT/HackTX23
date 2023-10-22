@@ -18,7 +18,6 @@ mongoose.connect(uri).then(() => {
 const users:any = []
 //Get user data
 app.get('/users',async (req,res) => {
-  
   try{
     const model = await dataModel.find({});
     res.status(200).json(model);
@@ -72,31 +71,48 @@ app.post('/users/login',async (req,res)=> {
 })
 
 // Update user data
-// app.put('/users', async (req : any, res) => {
- 
-//   const user: any = users.find(function(usr: any) {
-//     return usr.email == req.body.email
-//   })
-//   if (user == null){
-//     return res.status(400).send('Cannot find user')
-//   }
-//   try {
-//     // Update user data based on the request body
-//     for (const key in req.body) {
-//       if (Object.prototype.hasOwnProperty.call(req.body, key)) {
-//         user[key] = req.body[key];
-//       }
-//     }
+app.put('/users', async (req :any, res) => {
+  const emailToUpdate = req.body.email;
 
-//     res.send('User data updated successfully');
-//   } catch {
-//     res.status(500).send('Failed to update user data');
-//   }
-// });
+  try {
+    // Find the user to update
+    const userToUpdate = await dataModel.findOne({ email: emailToUpdate });
 
-// app.get("/hello", (_, res) => {
-//   res.send("Hello Vite + React + TypeScript!");
-// });
+    if (!userToUpdate) {
+      return res.status(404).send('User not found');
+    }
+
+    // Update user data based on the request body
+    if (req.body.fname) {
+      userToUpdate.fname = req.body.fname;
+    }
+
+    if (req.body.lname) {
+      userToUpdate.lname = req.body.lname;
+    }
+
+    if (req.body.location) {
+      userToUpdate.location = req.body.location;
+    }
+    if(req.body.password){
+      const EncryptedPassword = await bcrypt.hash(req.body.password,10);
+      userToUpdate.password = EncryptedPassword;
+    }
+  
+
+    // You can add more fields to update as needed
+    // Save the updated user data to the database
+    await userToUpdate.save();
+
+    res.send('User data updated successfully');
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Failed to update user data');
+  }
+});
+
+
+
 
 app.listen(3000, () => 
   console.log("Server is listening on port 3000...")

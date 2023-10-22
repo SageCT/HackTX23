@@ -23,9 +23,6 @@ const modelSchema = mongoose.Schema(
             type: String,
             required: [true, "location is required"]
         },
-  
-  
-
     },
     {
      timestamps:true
