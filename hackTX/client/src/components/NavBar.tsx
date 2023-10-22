@@ -11,7 +11,7 @@ const NavBar = () => {
         <div className="flex flex-row gap-5 content-center">
           <div className="flex flex-row mt-2">Login</div>
           <button className="btn bg-buttonlightblue hover:bg-slate-400 text-black flex flex-row">
-            <a href="#">Register</a>
+            <a href="/RegisterPage">Register</a>
           </button>
         </div>
       </div>
