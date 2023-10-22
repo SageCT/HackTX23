@@ -44,7 +44,7 @@ const RegisterPage = () => {
     </div>
     
       <div id = "login" className= "border-black border-2 rounded-xl py-8 px-32">
-        Have an account? <a href="#" className="text-blue-600 hover:text-blue-800">Log in</a>
+        Have an account? <a href="/LoginPage" className="text-blue-600 hover:text-blue-800">Log in</a>
       </div>
 
   </section>
