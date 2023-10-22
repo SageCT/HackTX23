@@ -86,7 +86,6 @@ app.get('/users', async (req,res) => {
   }catch(error : any){
     res.status(500).json({message: error.message});
   }
-
 });
 
 //Add input user data
@@ -128,7 +127,47 @@ app.post('/users/login',async (req,res)=> {
   } catch(error:any){
     res.status(500).json({message: error.message});
   }
+})
+
+// Update user data
+app.put('/users', async (req :any, res) => {
+  const emailToUpdate = req.body.email;
+
+  try {
+    // Find the user to update
+    const userToUpdate = await dataModel.findOne({ email: emailToUpdate });
+
+    if (!userToUpdate) {
+      return res.status(404).send('User not found');
+    }
+
+    // Update user data based on the request body
+    if (req.body.fname) {
+      userToUpdate.fname = req.body.fname;
+    }
+
+    if (req.body.lname) {
+      userToUpdate.lname = req.body.lname;
+    }
+
+    if (req.body.location) {
+      userToUpdate.location = req.body.location;
+    }
+    if(req.body.password){
+      const EncryptedPassword = await bcrypt.hash(req.body.password,10);
+      userToUpdate.password = EncryptedPassword;
+    }
+    // You can add more fields to update as needed
+    // Save the updated user data to the database
+    await userToUpdate.save();
+
+    res.send('User data updated successfully');
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Failed to update user data');
+  }
 });
+
 
 app.listen(3000, () => 
   console.log("Server is listening on port 3000...")

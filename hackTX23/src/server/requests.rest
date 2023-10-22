@@ -7,9 +7,9 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {  
-    "fname" : "Kevin69",
+    "fname" : "Kevin71",
     "lname": "Zheng",
-    "email": "kev444@gmail.com",
+    "email": "kev333@gmail.com",
     "password": "password",
     "location": "Houston"
 }
@@ -24,13 +24,14 @@ Content-Type: application/json
     "password": "password"
     
 }
+###
+PUT http://localhost:3000/users
+Content-Type: application/json
 
-# PUT http://localhost:3000/users
-# Content-Type: application/json
+{  
 
-# {  
-
-#     "email": "kev444@gmail.com",
-#     "password": "password"
+    "email": "kev444@gmail.com",
+    "password": "KBE"
     
-# }
+}
+
