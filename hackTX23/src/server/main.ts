@@ -98,8 +98,6 @@ app.put('/users', async (req :any, res) => {
       const EncryptedPassword = await bcrypt.hash(req.body.password,10);
       userToUpdate.password = EncryptedPassword;
     }
-  
-
     // You can add more fields to update as needed
     // Save the updated user data to the database
     await userToUpdate.save();
