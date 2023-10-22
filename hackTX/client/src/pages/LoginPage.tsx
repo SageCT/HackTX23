@@ -4,9 +4,8 @@ import Footer from "../components/Footer";
 const LandingPage = () => {
   return (<>
   <div className="w-sreen h-screen flex flex-row item-center justify-center max-h-sm">
-    <section id= "LoginMain" className= "flex flex-col items-center justify-center m-16 p-16 border-2 border-black rounded-xl max-w-sm">
 
-        {/* <div id= "LoginBox" className= "flex flex-col border-2 border-black rounded-xl m-4"> */}
+    <section id= "LoginMain" className= "flex flex-col items-center justify-center m-16 p-16 border-2 border-black rounded-xl max-w-sm">
 
             <a href="/LandingPage" className="flex items-center justify-center pt-8"><img src="/futuresight.svg" alt="FutureSight Logo"/></a>
 
@@ -30,8 +29,6 @@ const LandingPage = () => {
             <div id= "Signup">
                 Don't have an account? <a href="/RegisterPage" className="text-blue-500">Sign up</a>
             </div>
-    
-        {/* </div> */}
 
     </section>
     </div>
