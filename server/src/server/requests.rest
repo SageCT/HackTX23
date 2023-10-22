@@ -1,0 +1,37 @@
+GET http://localhost:3000/users
+
+
+###
+
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{  
+    "fname" : "Kevin71",
+    "lname": "Zheng",
+    "email": "kev333@gmail.com",
+    "password": "password",
+    "location": "Houston"
+}
+###
+
+POST http://localhost:3000/users/login
+Content-Type: application/json
+
+{  
+
+    "email": "kev444@gmail.com",
+    "password": "password"
+    
+}
+###
+PUT http://localhost:3000/users
+Content-Type: application/json
+
+{  
+
+    "email": "kev444@gmail.com",
+    "password": "KBE"
+    
+}
+
