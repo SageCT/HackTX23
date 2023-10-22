@@ -5,7 +5,7 @@ import LandingPage from "./pages/LandingPage";
 import RegisterPage from "./pages/RegisterPage";
 import QuestionPage from "./pages/QuestionPage";
 import FinalPage from "./pages/FinalPage";
-// import LoginPagevfrom "./pages/LoginPage;"
+import LoginPage from "./pages/LoginPage";
 import { useState } from "react";
 
 
@@ -18,7 +18,7 @@ function App() {
       <Route index element={<LandingPage />} />
           <Route path="/" element={<LandingPage />} />
           <Route path="/RegisterPage" element={<RegisterPage />} />
-          {/*<Route path="/LoginPage" element={<LoginPage />} />  */}
+          <Route path="/LoginPage" element={<LoginPage />} /> 
           <Route path="/QuestionPage" element={<QuestionPage />} />
           <Route path="/FinalPage" element={<FinalPage />} />
           <Route path="*" element={<LandingPage />} />
