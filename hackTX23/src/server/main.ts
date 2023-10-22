@@ -89,9 +89,18 @@ app.get('/users', async (req,res) => {
 });
 
 //Add input user data
-app.post('/users', async (req,res) => {
-  try{
-    const EncryptedPassword = await bcrypt.hash(req.body.password,10);
+app.post('/users', async (req, res) => {
+  try {
+    // Check if the email is already in use
+    const existingUser = await dataModel.findOne({ email: req.body.email });
+
+    if (existingUser) {
+      // If a user with the same email exists, return an error
+      return res.status(400).json({ message: 'Email is already in use' });
+    }
+
+    // If the email is not in use, proceed to create the user
+    const EncryptedPassword = await bcrypt.hash(req.body.password, 10);
     const user = {
       fname: req.body.fname,
       lname: req.body.lname,
@@ -99,11 +108,12 @@ app.post('/users', async (req,res) => {
       password: EncryptedPassword,
       location: req.body.location,
     };
-    const data = dataModel.create(user);
+
+    const data = await dataModel.create(user);
     res.status(201).json(data);
-  }
-  catch{
-    res.status(500).send("Failed to create User");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Failed to create User');
   }
 });
 
