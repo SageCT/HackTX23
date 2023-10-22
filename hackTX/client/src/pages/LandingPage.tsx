@@ -6,23 +6,14 @@ import ColoredShape from "../components/ColoredShape";
 const Landingpage = () => {
   return (
     <>
-<<<<<<< HEAD
-      <NavBar />
-      <a href="/QuestionPage">Question Page</a>
-      <div className="bg-white h-screen">
-        {/* Title Test */}
-        <div className="">
-          <h1 className="font-opensans">HELLO THIS IS A TESTERINO</h1>
-        </div>
-=======
       <div className="flex flex-col">
         <NavBar />
+        <a href= "/FinalPage">Final Page</a>
         <div className="bg-white text-black h-screen">
           {/* Title Test */}
           <div className="">
             <h1 className="font-opensans"></h1>
           </div>
->>>>>>> 23713c55ddba876fcdd15f000004dd4608feaeb5
 
           {/* Big text and under header */}
           <div className="flex flex-col">
