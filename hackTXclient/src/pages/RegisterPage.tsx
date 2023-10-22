@@ -1,7 +1,32 @@
 import React from "react";
+import { useState } from "react";
 import Footer from "../components/Footer";
+import axios from "axios";
 
 const RegisterPage = () => {
+  const [fname, setFname] = useState('');
+  const [lname, setLname] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPass] = useState('');
+
+  let userData = {
+    "fname": fname,
+    "lname": lname,
+    "email": email,
+    "password": password,
+    "location": "Austin"
+  }
+
+  async function registerUser(e: any) {
+    const res = await axios.post('users/', userData);
+    if(res.status !== 201) {
+      throw new Error("Unable to register");
+    }
+
+    const data = await res.data;
+    return data;
+  }
+
   return (<>
   <section id= "registerMain" className= "flex flex-col items-center justify-center m-4">
 
@@ -16,12 +41,18 @@ const RegisterPage = () => {
       <div id= "registerInfo" className= "flex flex-col items-center justify-center space-y-4 p-4">
 
         <div id="firstLast" className= "flex space-x-2">
-          <input type="text" placeholder="First Name" className="input input-bordered input-md w-full max-w-xs flex-grow"/>
-          <input type="text" placeholder="Last Name" className="input input-bordered input-md w-full max-w-xs flex-grow"/>
+          <input type="text" placeholder="First Name" className="input input-bordered input-md w-full max-w-xs flex-grow"
+            onChange={function(e) {setFname(e.target.value);}} />
+
+          <input type="text" placeholder="Last Name" className="input input-bordered input-md w-full max-w-xs flex-grow"
+            onChange={function(e) {setLname(e.target.value);}} />
         </div>
 
-        <input type="text" placeholder="Email" className="input input-bordered input-md w-full "/>
-        <input type="text" placeholder="Password" className="input input-bordered input-md w-full "/>
+        <input type="text" placeholder="Email" className="input input-bordered input-md w-full "
+         onChange={function(e) {setEmail(e.target.value);}} />
+
+        <input type="text" placeholder="Password" className="input input-bordered input-md w-full "
+          onChange={function(e) {setPass(e.target.value);}} />
 
         <div className="dropdown">
           <label tabIndex={0} className="btn m-1 w-full max-w-xs normal-case px-48 bg-white border-gray-300">City</label>
@@ -35,7 +66,9 @@ const RegisterPage = () => {
           By signing up you agree to our <a href="#" className="text-blue-600 hover:text-blue-800">Terms of Service</a> and <a href="#" className="text-blue-600 hover:text-blue-800">Privacy Policy</a>.
         </p>
 
-        <button className="btn bg-blue-600 normal-case text-white px-16">Sign up</button>
+        <button className="btn bg-blue-600 normal-case text-white px-16" onClick={registerUser}>
+          Sign up
+        </button>
 
       </div>
     
