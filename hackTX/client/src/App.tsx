@@ -7,8 +7,10 @@ import { useState } from "react";
 function App() {
   return (
     <>
-      <NavBar />
-      <Footer />
+      <div className="mx-auto my-auto h-screen overflow-hidden bg-white text-black">
+        <NavBar />
+        <Footer />
+      </div>
     </>
   );
 }
