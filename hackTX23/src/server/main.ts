@@ -1,9 +1,8 @@
 import express from "express";
+import ViteExpress from "vite-express";
 
-require('dotenv').config()
 const app = express();
 const bcrypt = require('bcrypt');
-
 const jwt = require('jsonwebtoken');
 app.use(express.json());
 
@@ -47,36 +46,31 @@ app.post('/users', async (req,res) => {
 });
 
 //Authenticate User
-app.post('/users/login', async (req, res) => {
-  // Check if the account exists and if the password is correct
-  const user = users.find(user => user.email === req.body.email);
-
-  if (user === undefined) {
-    return res.status(400).send('Cannot find user');
+app.post('/users/login',async (req,res)=> {
+  //checks if the account exists and if the password is correct
+  const user = users.find(user => user.email = req.body.email)
+  if (user == null){
+    return res.status(400).send('Cannot find user')
   }
-  try {
-    if (await bcrypt.compare(req.body.password, user.password)) {
-      // Password is correct, generate and send a JWT token
-      const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET);
-      res.json({ accessToken: accessToken });
-    } else {
-      res.send('Not Allowed');
+  try{
+    if( await bcrypt.compare(req.body.password, user.password)){
+      res.send('Success')
     }
-  } catch (error) {
-    res.status(500).send();
+    else{
+      res.send('Not Allowed')
+    }
+  } catch{
+    res.status(500).send()
   }
+
+
+})
+
+
+app.get("/hello", (_, res) => {
+  res.send("Hello Vite + React + TypeScript!");
 });
 
-
-
-app.get("/", (_, res) => {
-  res.send("Hello, World");
-});
-
-app.get("/oe-codes", (req, res) => {
-  res.send("test");
-});
-
-app.listen(3000, () => {
+ViteExpress.listen(app, 3000, () => 
   console.log("Server is listening on port 3000...")
-});
+);
