@@ -15,30 +15,8 @@ export const nameUS_ALL = {
     "Data_Sci": "OEUN000000000000015205104"
 }
 
-export const dummy = {
-    "status": "REQUEST_SUCCEEDED",
-    "responseTime": 179,
-    "message": [
-        "No Data Available for Series OEUN000000000000015125204 Year: 2020",
-        "No Data Available for Series OEUN000000000000015125204 Year: 2021"
-    ],
-    "Results": {
-        "series": [
-            {
-                "seriesID": "OEUN000000000000015125204",
-                "data": [
-                    {
-                        "year": "2022",
-                        "period": "A01",
-                        "periodName": "Annual",
-                        "latest": "true",
-                        "value": "132930",
-                        "footnotes": [
-                            {}
-                        ]
-                    }
-                ]
-            }
-        ]
-    }
+export const namesAustin_All = {
+    "Info_Sec": "OEUM001242000000015121204",
+    "Web_Dev": "OEUM001242000000015125404",
+    "Database_Architects": "OEUM001242000000015124304"
 }

@@ -1,7 +1,10 @@
 import express from "express";
 const mongoose = require('mongoose');
 const dataModel = require('./model');
-// import * as model from "./model";
+
+const IDs = require('./bls-data/seriesID');
+import * as blsDat from "./bls-data/occupations";
+
 const app = express();
 const bcrypt = require('bcrypt');
 app.use(express.json());
@@ -9,15 +12,73 @@ app.use(express.json());
 let dbUser = "futuresite_admin";
 let dbPass = "EVbv15GvZ8BX7zkk";
 let uri = `mongodb+srv://${dbUser}:${dbPass}@cluster0.mvingdv.mongodb.net/?retryWrites=true&w=majority`;
+
+let statusStr = "";
 mongoose.connect(uri).then(() => {
-  console.log('connected to db');
+  console.log("connected to db");
+  statusStr = "Connected to Database.";
 }).catch(function(err: any) {
+  statusStr = "Error in establishing database connection.";
   console.error(err);
 });
 
-const users:any = []
+//status route
+app.get('/status', (req, res) => {
+  res.status(200).send(statusStr);
+});
+
+//annual mean salary (all) route
+app.get('/meanAnnualSalary/All/:oID', (req, res) => {
+  const {oID} = req.params;
+
+  if(!(oID in IDs.nameUS_ALL)) {
+    res.status(404).send("INVALID");
+    return;
+  }
+  
+  blsDat.getBLSAPICallResult(IDs.nameUS_ALL[oID]).then(
+    function(jsonOutput) {
+      if(jsonOutput['status'] == "REQUEST_NOT_PROCESSED") {
+        res.send("RATE_LIMIT_EXCEEDED"); return;
+      }
+
+      let arrData: Array<Object> = jsonOutput["Results"]["series"][0]["data"];
+      let latestData: any = arrData.filter(function(elm: any) {
+        return elm['latest'] === 'true';
+      });
+
+      res.status(200).send(latestData[0]['value']);
+    }
+  );
+});
+
+//annual mean salary (Austin) route
+app.get('/meanAnnualSalary/Austin/:oID', (req, res) => {
+  const {oID} = req.params;
+
+  if(!(oID in IDs.namesAustin_All)) {
+    res.status(404).send("INVALID");
+    return;
+  }
+
+  blsDat.getBLSAPICallResult(IDs.namesAustin_All[oID]).then(
+    function(jsonOutput) {
+      if(jsonOutput['status'] == "REQUEST_NOT_PROCESSED") {
+        res.send("RATE_LIMIT_EXCEEDED"); return;
+      }
+
+      let arrData: Array<Object> = jsonOutput["Results"]["series"][0]["data"];
+      let latestData: any = arrData.filter(function(elm: any) {
+        return elm['latest'] === 'true';
+      });
+
+      res.status(200).send(latestData[0]['value']);
+    }
+  );
+});
+
 //Get user data
-app.get('/users',async (req,res) => {
+app.get('/users', async (req,res) => {
   try{
     const model = await dataModel.find({});
     res.status(200).json(model);
@@ -25,8 +86,8 @@ app.get('/users',async (req,res) => {
   }catch(error : any){
     res.status(500).json({message: error.message});
   }
-
 });
+
 //Add input user data
 app.post('/users', async (req,res) => {
   try{
@@ -49,24 +110,22 @@ app.post('/users', async (req,res) => {
 //Authenticate User
 app.post('/users/login',async (req,res)=> {
   //checks if the account exists and if the password is correct
-  // const user: any = users.find(you: any => you.email == req.body.email)
- 
   try{
     const loginData = await dataModel.find({email:req.body.email});
     if (loginData.length === 0 ){
       return res.status(400).send('Cannot find user')
     }
-    // console.log(req.body.password);
-    // console.log(loginData[0].password);
-    if( await bcrypt.compare(req.body.password, loginData[0].password)){
-      res.status(200).json(loginData);
+    
+    if(await bcrypt.compare(req.body.password, loginData[0].password)){
+      let userInfo = loginData[0];
+
+      res.status(200).json(userInfo);
     }
     else{
       res.send('Not Allowed')
     }
   } catch(error:any){
-    console.error(error);
-    // res.status(500).json({message: error.message});
+    res.status(500).json({message: error.message});
   }
 })
 
@@ -108,8 +167,6 @@ app.put('/users', async (req :any, res) => {
     res.status(500).send('Failed to update user data');
   }
 });
-
-
 
 
 app.listen(3000, () => 
