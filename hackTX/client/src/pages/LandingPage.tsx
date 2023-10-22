@@ -28,25 +28,43 @@ const Landingpage = () => {
           </div>
 
           <div className="flex flex-row justify-between px-10 pt-5">
-            <div className="w-[305px] h-[270px] border-4 border-black bg-white rounded-lg">
-              <h1 className="text-xl">Accelerate Your Finances</h1>
-              <ul>
-                <li>Find out your earning potential</li>
-                <li>Pivot your plans to match your passions</li>
+            <div className="w-[305px] h-[270px] border-4 border-black bg-white rounded-lg font-koulen">
+              <h1 className="text-2xl text-center font-koulen">
+                Accelerate Your Finances
+              </h1>
+              <ul className="list-disc">
+                <li className="text-lg text-left font-koulen pl-3">
+                  Find out your earning potential
+                </li>
+                <li className="text-lg text-left font-koulen">
+                  Pivot your plans to match your passions
+                </li>
               </ul>
             </div>
-            <div className="w-[305px] h-[270px] border-4 border-black bg-white rounded-lg">
-              <h1 className="text-xl">Make an informed decision</h1>
-              <ul>
-                <li>Find out your earning potential</li>
-                <li>Pivot your plans to match your passions</li>
+            <div className="w-[305px] h-[270px] border-4 border-black bg-white rounded-lg font-koulen">
+              <h1 className="text-2xl text-center font-koulen">
+                Make an informed decision
+              </h1>
+              <ul className="list-disc">
+                <li className="text-lg text-left font-koulen ">
+                  Find out your earning potential
+                </li>
+                <li className="text-lg text-left font-koulen">
+                  Pivot your plans to match your passions
+                </li>
               </ul>
             </div>
-            <div className="w-[305px] h-[270px] border-4 border-black bg-white rounded-lg">
-              <h1 className="text-xl">Learn about what's in demand</h1>
-              <ul>
-                <li></li>
-                <li></li>
+            <div className="w-[305px] h-[270px] border-4 border-black bg-white rounded-lg font-koulen">
+              <h1 className="text-2xl text-center font-koulen">
+                Learn about what's in demand
+              </h1>
+              <ul className="list-disc">
+                <li className="text-lg text-left font-koulen">
+                  Never stress for employment
+                </li>
+                <li className="text-lg text-left font-koulen">
+                  Freedom to work and live where you want
+                </li>
               </ul>
             </div>
           </div>

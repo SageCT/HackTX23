@@ -1,38 +1,75 @@
 import React from "react";
 import Footer from "../components/Footer";
 
+const affinity = [["web_dev", 0],["info_sec", 0],["database_arc",0]];
+
+
+
+function QuestionsResponse() {
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    e.preventDefault();
+    
+}
+
+
 const QuestionPage = () => {
-  return (<>
+  return (
+    <>
+      <section
+        id="QuestionBox"
+        className="mx-auto my-16 p-4 border-4 border-black rounded-lg max-w-3xl text-center"
+      >
+        <div id="Question" className="mb-4 text-xl font-semibold p-4">
+          I enjoy activities like art, writing, or other creative outlets.
+        </div>
 
-<section id="QuestionBox" className="mx-auto my-16 p-4 border-4 border-black rounded-lg max-w-3xl text-center">
-  <div id="Question" className="mb-4 text-xl font-semibold p-4">
-    I enjoy activities like art, writing, or other creative outlets.
-  </div>
-g
-  <div className="flex flex-col gap-3">
-    <div className="border-2 border-black rounded-xl p-2">
-      <a href="#" className="block p-2 text-left hover:bg-gray-200 hover:border-gray-400">Strongly agree</a>
-    </div>
-    <div className="border-2 border-black rounded-xl p-2">
-      <a href="#" className="block p-2 text-left hover:bg-gray-200 hover:border-gray-400">Agree</a>
-    </div>
-    <div className="border-2 border-black rounded-xl p-2">
-      <a href="#" className="block p-2 text-left hover:bg-gray-200 hover:border-gray-400">Neither agree nor disagree</a>
-    </div>
-    <div className="border-2 border-black rounded-xl p-2">
-      <a href="#" className="block p-2 text-left hover:bg-gray-200 hover:border-gray-400">Disagree</a>
-    </div>
-    <div className="border-2 border-black rounded-xl p-2">
-      <a href="#" className="block p-2 text-left hover:bg-gray-200 hover:border-gray-400">Strongly disagree</a>
-    </div>
-  </div>
-  
-</section>
+        <div className="flex flex-col gap-3">
+          <div className="border-2 border-black rounded-xl p-2">
+            <a
+              href="#"
+              className="block p-2 text-left hover:bg-gray-200 hover:border-gray-400"
+            >
+              Strongly agree
+            </a>
+          </div>
+          <div className="border-2 border-black rounded-xl p-2">
+            <a
+              href="#"
+              className="block p-2 text-left hover:bg-gray-200 hover:border-gray-400"
+            >
+              Agree
+            </a>
+          </div>
+          <div className="border-2 border-black rounded-xl p-2">
+            <a
+              href="#"
+              className="block p-2 text-left hover:bg-gray-200 hover:border-gray-400"
+            >
+              Neither agree nor disagree
+            </a>
+          </div>
+          <div className="border-2 border-black rounded-xl p-2">
+            <a
+              href="#"
+              className="block p-2 text-left hover:bg-gray-200 hover:border-gray-400"
+            >
+              Disagree
+            </a>
+          </div>
+          <div className="border-2 border-black rounded-xl p-2">
+            <a
+              href="#"
+              className="block p-2 text-left hover:bg-gray-200 hover:border-gray-400"
+            >
+              Strongly disagree
+            </a>
+          </div>
+        </div>
+      </section>
 
-<Footer/>
-
-
-  </>);
+      <Footer />
+    </>
+  );
 };
 
 export default QuestionPage;
