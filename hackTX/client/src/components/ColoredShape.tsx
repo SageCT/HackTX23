@@ -3,7 +3,7 @@ import React from "react";
 interface ShapeProps {
   type: string;
   color: string;
-  optional?: string;
+  position: string;
 }
 
 function ColoredShape(props: ShapeProps) {
@@ -11,10 +11,10 @@ function ColoredShape(props: ShapeProps) {
     return (
       <div
         className={
-          "w-[67px] h-[67px] border-4 border-solid border-black rounded-full bg-shape" +
+          "w-[67px] h-[67px] border-4 border-solid border-black rounded-full " +
           props.color +
           " " +
-          props.optional
+          props.position
         }
       ></div>
     );
@@ -22,10 +22,10 @@ function ColoredShape(props: ShapeProps) {
     return (
       <div
         className={
-          "w-[67px] h-[67px] border-4 border-solid border-black rounded-lg bg-black" +
+          "w-[67px] h-[67px] border-4 border-solid border-black " +
           props.color +
           " " +
-          props.optional
+          props.position
         }
       ></div>
     );

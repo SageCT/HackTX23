@@ -10,10 +10,10 @@ const GITHUBS = {
 const Footer = () => {
   return (
     <>
-      <div className="flex flex-row justify-center items-center bottom-0 h-12 w-screen text-black bg-navgray">
+      <div className="flex flex-col justify-center items-center h-12 w-screen text-black bg-navgray">
         <p className="text-sm">{"Created for HackTX 2023 | "}</p>
 
-        <div className= "flex flex-row space-x-2 px-2 text-sm">
+        <div className="flex flex-row space-x-2 px-2 text-sm">
           <a href={GITHUBS.ALTON}>@altonph</a>
           <a href={GITHUBS.SAGE}>@SageCT</a>
           <a href={GITHUBS.UJWAL}>@ujwal2003</a>
