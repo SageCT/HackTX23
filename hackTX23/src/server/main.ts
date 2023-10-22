@@ -6,22 +6,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 app.use(express.json());
 
-const users = [
-  {
-    fname: 'Kevin',
-    lname: 'Zheng',
-    email: 'kevinzheng14815@gmail.com',
-    password: '123',
-    location: 'Houston'
-  },
-  {
-    fname: 'Ujwal',
-    lname: 'Joshi',
-    email: 'ujwaljoshi12345@gmail.com',
-    password: '321',
-    location: 'Houston'
-  }
-]
+const users:any = []
 //Get user data
 app.get('/users', (req,res) => {
   res.json(users)
@@ -48,7 +33,10 @@ app.post('/users', async (req,res) => {
 //Authenticate User
 app.post('/users/login',async (req,res)=> {
   //checks if the account exists and if the password is correct
-  const user = users.find(user => user.email = req.body.email)
+  // const user: any = users.find(you: any => you.email == req.body.email)
+  const user: any = users.find(function(usr: any) {
+    return usr.email == req.body.email
+  })
   if (user == null){
     return res.status(400).send('Cannot find user')
   }
@@ -62,14 +50,12 @@ app.post('/users/login',async (req,res)=> {
   } catch{
     res.status(500).send()
   }
-
-
 })
 
 
-app.get("/hello", (_, res) => {
-  res.send("Hello Vite + React + TypeScript!");
-});
+// app.get("/hello", (_, res) => {
+//   res.send("Hello Vite + React + TypeScript!");
+// });
 
 app.listen(3000, () => 
   console.log("Server is listening on port 3000...")
