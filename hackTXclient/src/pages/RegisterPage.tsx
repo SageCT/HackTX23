@@ -67,7 +67,7 @@ const RegisterPage = () => {
         </p>
 
         <button className="btn bg-blue-600 normal-case text-white px-16" onClick={registerUser}>
-          Sign up
+          <a href="/LoginPage">Sign up</a>
         </button>
 
       </div>
